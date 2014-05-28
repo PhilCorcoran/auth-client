@@ -49,11 +49,14 @@ var DBAAjax={
 	client:client,
 	role:'DBA'
 }
+var app = express();
+app.use(express.bodyParser());
+app.use(express.cookieParser());
 app.all('/sosecure',authClient(DBAAjax),routes.secure);
 app.get('/anyauth',authClient(AnyAuthenticatedUser),routes.secure);
 
 ```
-
+Note that the module reads cookies so you need to include `express.cookieParser()`
 #Test
 Install the required node modules and run `node app.js` in the test directory.
 Browse to 
