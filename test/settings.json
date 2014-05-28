@@ -1,0 +1,11 @@
+{
+	"authServer":{
+		"authURL":"http://any.com/auth",
+		"logoutURL":"http://any.com/logout",
+		"userInfoURL":"http://any.com/user"
+		},
+		"client":{
+			"client_id":"anID",
+			"client_secret":"aSecret"
+		}
+}

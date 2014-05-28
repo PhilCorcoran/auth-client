@@ -1,0 +1,38 @@
+{
+  "name": "auth-client",
+  "version": "0.1.0",
+  "description": "Checks Authorisation by getting the user and roles from a remote web server",
+  "keywords": [
+    "express",
+    "auth",
+    "authentication",
+    "login",
+    "session",
+    "authorization"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PhilCorcoran/auth-client.git"
+  },
+  "bugs": {
+    "url": "http://github.com/PhilCorcoran/auth-client/issues"
+  },
+  "author": {
+    "name": "Philip Corcoran",
+    "email": "philfcorcoran@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "./lib",
+  "dependencies": {
+    "request": "~2.34.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">= 0.10.19"
+  }
+}
