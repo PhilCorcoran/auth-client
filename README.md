@@ -32,10 +32,9 @@ var authClient=require('auth-client');
 - `redirectLogin`: if undefined the user's browser will not be redirected. A 401 will be sent instead. This is to support AJAX
 
 
-## Retrieve and Serve cached data:
+## Secure URLs
 
-Relies on  `expressjs`.
-The following code instructs `express` to use the `serve` method of `cache-ex` on all requests. Subsequent handlers are only called if the object has not been served from the cache.
+Secure a URL for any authenticated user and secure a url for users with a particular role.
 ```js
 var server=settings.authServer;
 var client=settings.client;
