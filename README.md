@@ -3,20 +3,20 @@ auth-client
 
 Checks Authorisation by getting the user and roles from a remote web server
 
-# Install
+#Install
 
 ```bash
   npm install auth-client
 ```
-# Examples:
+#Examples:
 
-## Initialization
+##Initialization
 
 ```js
 var authClient=require('auth-client');
 ```
 
-### Options
+###Options
 
 - `server`: configuration for the remote authorization server with the following attributes;
 - `authURL`: The authorization url
@@ -32,7 +32,7 @@ var authClient=require('auth-client');
 - `redirectLogin`: if undefined the user's browser will not be redirected. A 401 will be sent instead. This is to support AJAX
 
 
-## Secure URLs
+##Secure URLs
 
 Secure a URL for any authenticated user and secure a url for users with a particular role.
 ```js
@@ -59,13 +59,18 @@ Install the required node modules and run `node app.js` in the test directory.
 Browse to 
 `http://localhost:8888/secure`
 
+#Notes
 
-## Release History
+Only the authorization endpoint is exposed to the internet  
+All communications between the client relying party and the UserInfo Endpoint are secured behind a firewall  
+The code is used only once between the browser and the nodejs service and is then replaced by a session access token
+Microservices are sessionless
+#Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
 |v0.1.0|2014-05-28|Created|
 
-# License 
+#License 
 
 (The MIT License)
 
