@@ -49,7 +49,7 @@ var DBAAjax={
 	role:'DBA',
 	redirectURI:'http://localhost:8888/index.html'	
 }
-app.all('/sosecure',ac.swapCode(SDSupport),ac.check(SDSupport),ac.keepAlive(),routes.secure);
+app.all('/sosecure',ac.swapCode(DBAAjax),ac.check(DBAAjax),ac.keepAlive(),routes.secure);
 app.get('/anyauth',,ac.check(AnyAuthenticatedUser),routes.secure);
 
 ```
