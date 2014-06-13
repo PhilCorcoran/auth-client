@@ -1,7 +1,7 @@
 {
   "name": "auth-client",
-  "version": "0.1.0",
-  "description": "Checks Authorisation by getting the user and roles from a remote web server",
+  "version": "0.2.0",
+  "description": "Checks Authorisation using tokens from a remote web server",
   "keywords": [
     "express",
     "auth",
@@ -34,5 +34,8 @@
   "devDependencies": {},
   "engines": {
     "node": ">= 0.10.19"
-  }
+  },
+  "readme": "auth-client\n===========\n\nChecks Authorisation using tokens from a remote web server\n\n# Install\n\n```bash\n  npm install auth-client\n```\n# Examples:\n\n## Initialization\n\n```js\nvar authClient=require('auth-client');\n```\n\n### Options\n\n- `server`: configuration for the remote authorization server with the following attributes;\n- `authURL`: The authorization url\n- `logoutURL`: The url for logging out\n- `userInfoURL`: The url for retrieving user information such as name, email, roles\n- `client`: The relying party client information including the following attributes;\n- `client_id`: a client id which was registered with the authorization server\n- `client_secret`: a client password which was registered with the authorization server\n- `authCode`: the name of the code parameter. Defaults to `code` as specified by OAUTH\n- `tokenName`: the name of the token used to access the user info. Defaults to access_token\n- `redirectURI`: a url to be redirected to following authorization. Defaults to the current url.\n- `role`: a user role to be checked. If undefined then any authenticated user will be accepted.\n- `redirectLogin`: if undefined the user's browser will not be redirected. A 401 will be sent instead. This is to support AJAX\n\n\n## Secure URLs\n\nSecure a URL for any authenticated user and secure a url for users with a particular role.\n```js\nvar server=settings.authServer;\nvar client=settings.client;\n\nvar AnyAuthenticatedUser={\n\tserver:server,\n\tclient:client,\n\tredirectLogin:true\n}\nvar DBAAjax={\n\tserver:server,\n\tclient:client,\n\trole:'DBA'\n}\napp.all('/sosecure',authClient(DBAAjax),routes.secure);\napp.get('/anyauth',authClient(AnyAuthenticatedUser),routes.secure);\n\n```\n\n#Test\nInstall the required node modules and run `node app.js` in the test directory.\nBrowse to \n`http://localhost:8888/secure`\n\n\n## Release History\n|Version|Date|Description|\n|:--:|:--:|:--|\n|v0.1.0|2014-05-28|Created|\n\n# License \n\n(The MIT License)\n\nCopyright (c) 2013 PC ",
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/PhilCorcoran/auth-client",
 }

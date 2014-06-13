@@ -1,80 +1,73 @@
 auth-client
 ===========
 
-Checks Authorisation by getting the user and roles from a remote web server
+Checks Authorisation using tokens from a remote web server
 
-#Install
+# Install
 
 ```bash
   npm install auth-client
 ```
-#Examples:
+# Examples:
 
-##Initialization
+## Initialization
 
 ```js
-var authClient=require('auth-client');
+var ac=require('auth-client')(options);
 ```
 
-###Options
+### Options
 
 - `server`: configuration for the remote authorization server with the following attributes;
-- `authURL`: The authorization url
+- `authURL`: The login authorization url
 - `logoutURL`: The url for logging out
-- `userInfoURL`: The url for retrieving user information such as name, email, roles
+- `keepAliveURL`: The url for keeping a session active
+- `swapCodeURL`: The url for exchanging an authorization code for an access_token
+- `userAuthURL`: The url for authorizing a role with a token
 - `client`: The relying party client information including the following attributes;
 - `client_id`: a client id which was registered with the authorization server
 - `client_secret`: a client password which was registered with the authorization server
 - `authCode`: the name of the code parameter. Defaults to `code` as specified by OAUTH
 - `tokenName`: the name of the token used to access the user info. Defaults to access_token
 - `redirectURI`: a url to be redirected to following authorization. Defaults to the current url.
+- `scope`: The scope of the authorization request, the name of the resource to be accessed.
 - `role`: a user role to be checked. If undefined then any authenticated user will be accepted.
 - `redirectLogin`: if undefined the user's browser will not be redirected. A 401 will be sent instead. This is to support AJAX
 
 
-##Secure URLs
+## Secure URLs
 
 Secure a URL for any authenticated user and secure a url for users with a particular role.
 ```js
-var server=settings.authServer;
-var client=settings.client;
 
 var AnyAuthenticatedUser={
-	server:server,
-	client:client,
+	scope:'Profile',
 	redirectLogin:true
 }
 var DBAAjax={
-	server:server,
-	client:client,
-	role:'DBA'
+	scope:'Profile',
+	role:'DBA',
+	redirectURI:'http://localhost:8888/index.html'	
 }
-var app = express();
-app.use(express.bodyParser());
-app.use(express.cookieParser());
-app.all('/sosecure',authClient(DBAAjax),routes.secure);
-app.get('/anyauth',authClient(AnyAuthenticatedUser),routes.secure);
+app.all('/sosecure',ac.swapCode(SDSupport),ac.check(SDSupport),ac.keepAlive(),routes.secure);
+app.get('/anyauth',,ac.check(AnyAuthenticatedUser),routes.secure);
 
 ```
-Note that the module reads cookies so you need to include `express.cookieParser()`
+
 #Test
 Install the required node modules and run `node app.js` in the test directory.
 Browse to 
 `http://localhost:8888/secure`
 
-#Notes
 
-Only the authorization endpoint is exposed to the internet  
-All communications between the client relying party and the UserInfo Endpoint are secured behind a firewall  
-The code is used only once between the browser and the nodejs service and is then replaced by a session access token
-Microservices are sessionless
-#Release History
+## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.2.0|2014-06-13|Added swapCode,keepAlive and angularJS XSRF check|
 |v0.1.0|2014-05-28|Created|
 
-#License 
+# License 
 
 (The MIT License)
 
-Copyright (c) 2013 PC 
+Copyright (c) 2014 PC 
