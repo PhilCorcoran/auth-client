@@ -1,1 +1,0 @@
-supervisor -p200 -w ..\lib,. app.js
