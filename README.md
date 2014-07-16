@@ -13,7 +13,7 @@ Checks Authorisation using tokens from a remote web server
 ## Initialization
 
 ```js
-var ac=require('auth-client')(options);
+var ac=require('auth-client')({server:settings.authServer,client:settings.client}),
 ```
 
 ### Options
@@ -33,36 +33,41 @@ var ac=require('auth-client')(options);
 - `scope`: The scope of the authorization request, the name of the resource to be accessed.
 - `role`: a user role to be checked. If undefined then any authenticated user will be accepted.
 - `redirectLogin`: if undefined the user's browser will not be redirected. A 401 will be sent instead. This is to support AJAX
+### Options for swapCode function
+- `noRespond`: don't do a res.send so this can be chained
 
 
 ## Secure URLs
 
-Secure a URL for any authenticated user and secure a url for users with a particular role.
+Secure a URL for any authenticated user with permission to perform an operation on a resource
 ```js
 
-var AnyAuthenticatedUser={
-	scope:'Profile',
-	redirectLogin:true
+// Traditional web app with no AJAX
+var Support={scope:'aProtectedResource',
+	operation:'Update',
+	redirectURI:'http://localhost:8888/secure',
+	redirectLogin:true, //301 will be sent by server
+	noRespond:true // swapCode will not do a res.send so it can be chained with other functions
 }
-var DBAAjax={
-	scope:'Profile',
-	role:'DBA',
-	redirectURI:'http://localhost:8888/index.html'	
-}
-app.all('/sosecure',ac.swapCode(DBAAjax),ac.check(DBAAjax),ac.keepAlive(),routes.secure);
-app.get('/anyauth',,ac.check(AnyAuthenticatedUser),routes.secure);
+app.get('/secure',noCache,ac.swapCode(Support),ac.check(Support),ac.keepAlive(),routes.secure);
 
+// AJAX application
+var SupportAJAX={
+	scope:'aProtectedResource',
+	operation:'Update',
+	client_id:'MemberSearch',
+	noRespond:true,
+	redirectURI:'http://localhost:8888/index.html%23/' 
+	// no redirectLogin means that 401 is sent by server instead of 301
+}
+app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secure);
 ```
-
-#Test
-Install the required node modules and run `node app.js` in the test directory.
-Browse to 
-`http://localhost:8888/secure`
 
 
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.3.0|2014-07-16|Added logout and checks for operations on resources|
 |v0.2.0|2014-06-13|Added swapCode,keepAlive and angularJS XSRF check|
 |v0.1.0|2014-05-28|Created|
 
