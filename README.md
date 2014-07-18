@@ -30,11 +30,15 @@ var ac=require('auth-client')({server:settings.authServer,client:settings.client
 - `authCode`: the name of the code parameter. Defaults to `code` as specified by OAUTH
 - `tokenName`: the name of the token used to access the user info. Defaults to access_token
 - `redirectURI`: a url to be redirected to following authorization. Defaults to the current url.
-- `scope`: The scope of the authorization request, the name of the resource to be accessed.
-- `role`: a user role to be checked. If undefined then any authenticated user will be accepted.
 - `redirectLogin`: if undefined the user's browser will not be redirected. A 401 will be sent instead. This is to support AJAX
+
 ### Options for swapCode function
 - `noRespond`: don't do a res.send so this can be chained
+### Options for check function
+
+- `scope`: The scope of the authorization request, the name of the resource to be accessed.
+- `operation`: The operation on the resource to be checked
+- `clientReq`: The name of the object on the express `req` object to sent as the original client request
 
 
 ## Secure URLs
@@ -67,6 +71,7 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.3.1|2014-07-18|Can set original client request as an object from express req object|
 |v0.3.0|2014-07-16|Added logout and checks for operations on resources|
 |v0.2.0|2014-06-13|Added swapCode,keepAlive and angularJS XSRF check|
 |v0.1.0|2014-05-28|Created|
