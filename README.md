@@ -71,6 +71,7 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.3.2|2014-08-05|Check looks for token in body,query, cookie|
 |v0.3.1|2014-07-18|Can set original client request as an object from express req object|
 |v0.3.0|2014-07-16|Added logout and checks for operations on resources|
 |v0.2.0|2014-06-13|Added swapCode,keepAlive and angularJS XSRF check|
