@@ -34,12 +34,15 @@ var ac=require('auth-client')({server:settings.authServer,client:settings.client
 
 ### Options for swapCode function
 - `noRespond`: don't do a res.send so this can be chained
+
 ### Options for check function
 
 - `scope`: The scope of the authorization request, the name of the resource to be accessed.
 - `operation`: The operation on the resource to be checked
 - `clientReq`: The name of the object on the express `req` object to sent as the original client request
 
+### Environment variables
+- `AUTH_CLIENT_MODE`: If this is set to `promiscuous` And  `NODE_ENV` ==  `development` then the authorization check always allows access to anyone.
 
 ## Secure URLs
 
