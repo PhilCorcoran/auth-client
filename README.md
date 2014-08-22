@@ -74,6 +74,7 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.3.3|2014-08-22|Scope added|
 |v0.3.3|2014-08-20|Added promiscuous mode|
 |v0.3.2|2014-08-05|Check looks for token in body,query, cookie|
 |v0.3.1|2014-07-18|Can set original client request as an object from express req object|
