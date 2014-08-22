@@ -1,6 +1,6 @@
 {
   "name": "auth-client",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Checks Authorisation using tokens from a remote web server",
   "keywords": [
     "express",
