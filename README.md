@@ -74,6 +74,7 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.4.3|2014-09-04|Debug module|
 |v0.4.2|2014-09-02|Location in 403 response|
 |v0.4.1|2014-08-22|Resource check|
 |v0.3.3|2014-08-20|Added promiscuous mode|
