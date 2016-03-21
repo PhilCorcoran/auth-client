@@ -13,7 +13,7 @@ Checks Authorisation using tokens from a remote web server
 ## Initialization
 
 ```js
-var ac=require('auth-client')({server:settings.authServer,client:settings.client}),
+var ac=require('auth-client')({server:settings.authServer,client:settings.client,apiKey:settings.apiKey}),
 ```
 
 ### Options
