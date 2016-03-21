@@ -29,6 +29,7 @@ var ac=require('auth-client')({server:settings.authServer,client:settings.client
 - `client_secret`: a client password which was registered with the authorization server
 - `authCode`: the name of the code parameter. Defaults to `code` as specified by OAUTH
 - `tokenName`: the name of the token used to access the user info. Defaults to access_token
+- `apiKey`: a key which can be used by mobile apps to access an api via X-Api-Key header
 - `redirectURI`: a url to be redirected to following authorization. Defaults to the current url.
 - `redirectLogin`: if undefined the user's browser will not be redirected. A 401 will be sent instead. This is to support AJAX
 
@@ -74,6 +75,7 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.4.5|2016-03-21|Allow mobile apps to use apiKey instead of XSRF check|
 |v0.4.4|2015-09-28|Clear token cookie on unauthorised (401)|
 |v0.4.3|2014-09-04|Debug module|
 |v0.4.2|2014-09-02|Location in 403 response|
@@ -89,4 +91,4 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 
 (The MIT License)
 
-Copyright (c) 2014 PC 
+Copyright (c) 2016 PC 
