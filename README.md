@@ -75,6 +75,8 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.4.7|2017-02-01|Republished as github latest not up to date.|
+|v0.4.6|2016-10-25|Fixed to check the authHeader before other sources of the key|
 |v0.4.5|2016-03-21|Allow mobile apps to use apiKey instead of XSRF check|
 |v0.4.4|2015-09-28|Clear token cookie on unauthorised (401)|
 |v0.4.3|2014-09-04|Debug module|
