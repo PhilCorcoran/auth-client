@@ -41,6 +41,7 @@ var ac=require('auth-client')({server:settings.authServer,client:settings.client
 - `scope`: The scope of the authorization request, the name of the resource to be accessed.
 - `operation`: The operation on the resource to be checked
 - `clientReq`: The name of the object on the express `req` object to sent as the original client request
+- `clientRes`: The name of the object on the express `req` object to write any authDetails in the authentication response.
 
 ### Environment variables
 - `AUTH_CLIENT_MODE`: If this is set to `promiscuous` And  `NODE_ENV` ==  `development` then the authorization check always allows access to anyone.
@@ -75,6 +76,7 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.4.7|2017-05-16|Support authDetail object in the response so cater for conditional access |
 |v0.4.7|2017-02-01|Republished as github latest not up to date.|
 |v0.4.6|2016-10-25|Fixed to check the authHeader before other sources of the key|
 |v0.4.5|2016-03-21|Allow mobile apps to use apiKey instead of XSRF check|
