@@ -29,7 +29,7 @@ var ac=require('auth-client')({server:settings.authServer,client:settings.client
 - `client_secret`: a client password which was registered with the authorization server
 - `authCode`: the name of the code parameter. Defaults to `code` as specified by OAUTH
 - `tokenName`: the name of the token used to access the user info. Defaults to access_token
-- `apiKey`: a key which can be used by mobile apps to access an api via X-Api-Key header
+- `apiKey`: an array  of objects representing api keys which can be used by mobile apps to access an api via X-Api-Key header e.g. `{key:"ABC123", thirdParty:"acme"}`
 - `redirectURI`: a url to be redirected to following authorization. Defaults to the current url.
 - `redirectLogin`: if undefined the user's browser will not be redirected. A 401 will be sent instead. This is to support AJAX
 
@@ -76,7 +76,8 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
-|v0.4.7|2017-05-16|Support authDetail object in the response so cater for conditional access |
+|v0.4.9|2017-06-19|Multiple API keys can be configured for various third parties |
+|v0.4.8|2017-05-16|Support authDetail object in the response so cater for conditional access |
 |v0.4.7|2017-02-01|Republished as github latest not up to date.|
 |v0.4.6|2016-10-25|Fixed to check the authHeader before other sources of the key|
 |v0.4.5|2016-03-21|Allow mobile apps to use apiKey instead of XSRF check|
