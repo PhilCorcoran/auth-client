@@ -66,7 +66,7 @@ var SupportAJAX={
 	operation:'Update',
 	client_id:'MemberSearch',
 	noRespond:true,
-	redirectURI:'http://localhost:8888/index.html%23/' 
+	redirectURI:'http://localhost:8888/index.html%23/'
 	// no redirectLogin means that 401 is sent by server instead of 301
 }
 app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secure);
@@ -76,6 +76,7 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v0.4.10|2018-02-27|Updated dependencies to latest versions |
 |v0.4.9|2017-06-19|Multiple API keys can be configured for various third parties |
 |v0.4.8|2017-05-16|Support authDetail object in the response so cater for conditional access |
 |v0.4.7|2017-02-01|Republished as github latest not up to date.|
@@ -92,8 +93,8 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 |v0.2.0|2014-06-13|Added swapCode,keepAlive and angularJS XSRF check|
 |v0.1.0|2014-05-28|Created|
 
-# License 
+# License
 
 (The MIT License)
 
-Copyright (c) 2016 PC 
+Copyright (c) 2016 PC
