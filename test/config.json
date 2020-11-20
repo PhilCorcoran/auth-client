@@ -1,0 +1,17 @@
+{
+    "server" : {
+        "authURL" : "http://localhost/auth",
+        "swapCodeURL" : "http://localhost/swapCode",
+        "keepAliveURL" : "http://localhost/keepalive",
+        "userAuthURL" : "http://localhost/userAuth",
+        "logoutURL" : "http://localhost/logout"        
+    },
+    "client" : {
+        "client_id" : "test_client_id"
+    },
+    "tokenName" : "access_token",
+    "authCode" : "code",
+    "redirectLogin" : true,
+    "redirectURI" : "/redirect",
+    "apiKey" : "TEST_API_KEY"
+}
