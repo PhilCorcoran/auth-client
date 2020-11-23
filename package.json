@@ -1,6 +1,6 @@
 {
   "name": "auth-client",
-  "version": "0.4.11",
+  "version": "1.0.0",
   "description": "Checks Authorisation using tokens from a remote web server",
   "keywords": [
     "express",
@@ -29,12 +29,20 @@
   ],
   "main": "./lib",
   "dependencies": {
-    "debug": "^4.1.0",
-    "request": "^2.88.2"
+    "axios": "^0.21.0",
+    "debug": "^4.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^8.2.1",
+    "nock": "^13.0.5",
+    "nyc": "^15.1.0"
+  },
   "engines": {
-    "node": ">= 0.10.19"
+    "node": ">= 8.0.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "coverage": "nyc mocha"
   },
   "readme": "auth-client",
   "readmeFilename": "README.md",

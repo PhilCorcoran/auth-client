@@ -76,6 +76,7 @@ app.all('/ajaxsecure',ac.swapCode(SupportAJAX),ac.check(SupportAJAX),routes.secu
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|v1.0.0|2020-11-23|Migrate from 'request' to 'axios'. Maybe breaking changes for some as 'axios' proxy supprt is different that requests.  |
 |v0.4.11|2020-03-04|Updated dependencies to latest versions and removed use of deprecated req.param|
 |v0.4.10|2018-02-27|Updated dependencies to latest versions |
 |v0.4.9|2017-06-19|Multiple API keys can be configured for various third parties |
